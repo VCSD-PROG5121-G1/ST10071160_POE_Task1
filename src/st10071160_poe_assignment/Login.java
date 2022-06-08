@@ -27,6 +27,11 @@ public class Login
         loginPassword = lp;
     }
     
+    public Login()
+    {
+        
+    }
+    
     //returns username
     public String getUsername()
     {
@@ -64,11 +69,11 @@ public class Login
     }
     
     //this method will check if the length of the username is less than 5 characters, and if it contains an underscore, and then return a true or false value
-    public boolean checkUserName()
+    public boolean checkUserName(String u)
     {
         boolean validUser = false;
         
-        if(getUsername().length() < 5 && getUsername().contains("_"))
+        if(u.length() < 5 && u.contains("_"))
         {
             validUser = true;
         }
@@ -78,12 +83,12 @@ public class Login
     //this method will check if the password meets the complexity standards, and return a true or false value
     //true will be returned if the password is more than 8 characters long, contains a capital letter, contains a number, and contains a special character
     //false will be returned if one of these checks is false
-    public boolean checkPasswordComplexity()
+    public boolean checkPasswordComplexity(String p)
     {
         
         boolean validPass = false;
         
-        if(password.length() >= 8)
+        if(p.length() >= 8)
         {
             //question:  https://stackoverflow.com/questions/1795402/check-if-a-string-contains-a-special-character
             //answer:  https://stackoverflow.com/a/41697673
@@ -93,9 +98,9 @@ public class Login
             Pattern number = Pattern.compile("[0-9]");
             Pattern specialChar = Pattern.compile ("[!@#$%&*()_+=|<>?{}\\[\\]~-]");
             
-            Matcher hasUpperCase = upperCase.matcher(password);
-            Matcher hasNumber = number.matcher(password);
-            Matcher hasSpecialChar = specialChar.matcher(password);
+            Matcher hasUpperCase = upperCase.matcher(p);
+            Matcher hasNumber = number.matcher(p);
+            Matcher hasSpecialChar = specialChar.matcher(p);
             
             return hasUpperCase.find() && hasNumber.find() && hasSpecialChar.find();
         }
@@ -107,7 +112,7 @@ public class Login
     
     //this method will check if the checkUserName() and checkPasswordComplexity() methods return true and will return a method
     //if false is returned for either of these methods, it will reprompt the user to enter another username or password depending which is incorrect
-    public String registerUser()
+    public String registerUser(boolean cu, boolean cp)
     {
         String temp = "";
         
@@ -131,11 +136,11 @@ public class Login
     
     //this method will check if the username and password entered by the user when logging in match the ones that were entered when signing up by the user
     //the method will return true if they both match, otherwise it will return false
-    public boolean loginUser()
+    public boolean loginUser(String lu)
     {
         boolean validLog = false;
             
-        if((getLoginUser().equals(getUsername()) && (getLoginPass().equals(getPassword()))))
+        if((lu.equals(getUsername()) && (lu.equals(getPassword()))))
         {
             validLog = true;
         }
@@ -149,11 +154,11 @@ public class Login
     public String returnLoginStatus()
     {
         String temp = "";
-        if(loginUser() == true)
+        if(loginUser(lu) == true)
         {
             temp = "Welcome " + name + " " + surname + " it is great to see you again!";
         }
-        else if(loginUser() == false)
+        else if(loginUser(lu) == false)
         {
             JOptionPane.showMessageDialog(null, "Username or password incorrect, please try again");
             loginUsername = JOptionPane.showInputDialog("Enter your username to log in");

@@ -74,13 +74,28 @@ public class ST10071160_POE_Assignment
                 JOptionPane.showMessageDialog(null, "Welcome to EasyKanban");
                 int choiceTwo = Integer.parseInt(JOptionPane.showInputDialog( "Enter the value of your chosen option " + "\nOption 1: Add Tasks" + "\nOption 2: Show report" + "\nOption 3: Quit"));
                 
-                
+                Task tk = new Task();
                 
                 while(choiceTwo != 3)
                 {
                     if(choiceTwo == 1)
                     {
-                        JOptionPane.showMessageDialog(null, "Option 1 selected");
+                         int count = 0;
+                         count = Integer.parseInt(JOptionPane.showInputDialog("Enter the amount of tasks you would like to enter"));
+                         
+                         
+                         
+                         for(int i = 0; i < count; i++)
+                         {
+                            tk.inputTask();
+                            tk.checkTDesc();
+                            tk.totalHours();
+                            
+                            JOptionPane.showMessageDialog(null, tk.toString());
+                         }
+                         
+                         JOptionPane.showMessageDialog(null, "Total hours of all tasks: " + tk.totalHours());
+                        
                     }
                     else if(choiceTwo == 2)
                     {
