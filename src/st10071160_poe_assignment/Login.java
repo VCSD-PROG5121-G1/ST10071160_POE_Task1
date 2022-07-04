@@ -116,17 +116,17 @@ public class Login
     {
         String temp = "";
         
-        if(checkUserName() == false)
+        if(checkUserName(cu) == false)
         {
             username = JOptionPane.showInputDialog("Username not formatted correctly, please enter a username that includes an underscore (_) and is less than 5 characters long");
         }
         
-        if(checkPasswordComplexity() == false)
+        if(checkPasswordComplexity(cp) == false)
         {
             password = JOptionPane.showInputDialog("Password is not formatted correctly, please enter a password that is more than 8 characters long, and includes a capital letter, a number, and a special character");
         }
         
-        if(checkUserName() == true && checkPasswordComplexity() == true)
+        if(checkUserName(cu) == true && checkPasswordComplexity(cp) == true)
         {
             temp = "Username and password successfully captured";
         }

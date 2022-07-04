@@ -71,45 +71,64 @@ public class ST10071160_POE_Assignment
             //will check if the login details entered by the user are correct and then will proceed with code
             if(lg.loginUser() == true)
             {
+                //Welcome message is displayed to the user
                 JOptionPane.showMessageDialog(null, "Welcome to EasyKanban");
+                
+                //User is promprted for a choice as to what to do next
                 int choiceTwo = Integer.parseInt(JOptionPane.showInputDialog( "Enter the value of your chosen option " + "\nOption 1: Add Tasks" + "\nOption 2: Show report" + "\nOption 3: Quit"));
                 
+                //Creates a new task object 
                 Task tk = new Task();
                 
+                //loops until the user chooses the option '3'
                 while(choiceTwo != 3)
                 {
+                    //if the user chooses the option '1' this code will execute 
                     if(choiceTwo == 1)
                     {
                          int count = 0;
+                         
+                         //this will prompt the user to enter a value to indicate the amount of tasks to add
                          count = Integer.parseInt(JOptionPane.showInputDialog("Enter the amount of tasks you would like to enter"));
                          
-                         
-                         
+                         //this will loop the code until it reaches the amount that the user entered 
                          for(int i = 0; i < count; i++)
                          {
+                             //this will prompt the user to enter their task details
                             tk.inputTask();
+                            //this will check if the description entered is less than 50 characters long
                             tk.checkTDesc();
+                            //this will add the hours value entered to the total hours of every task
                             tk.totalHours();
+                            //this will increase the number of the current task being entered 
+                            tk.increaseTNum();
                             
+                            //this will display all of the variables entered by the user in a specified order
                             JOptionPane.showMessageDialog(null, tk.toString());
                          }
                          
+                         //this will display the total amount of hours after every task has been entered 
                          JOptionPane.showMessageDialog(null, "Total hours of all tasks: " + tk.totalHours());
                         
                     }
+                    //if the choice is '2' this code will executed 
                     else if(choiceTwo == 2)
                     {
+                        //this will display the message 'coming soon'
                         JOptionPane.showMessageDialog(null, "Coming soon");
                     }
+                    //this will continuously reprompt the user for their next choice until they pick '3'
                     choiceTwo = Integer.parseInt(JOptionPane.showInputDialog( "Enter the value of your chosen option " + "\nOption 1: Add Tasks" + "\nOption 2: Show report" + "\nOption 3: Quit"));
                 }
                 
+                //this will display the message 'see you next time!'
                 JOptionPane.showMessageDialog(null, "See you next time!");
             }
        }
        //if the users choice is 'exit' the program will return a message and then end
        else if(choice.equals("exit"))
        {
+           //this will display the message 'see you next time!'
            JOptionPane.showMessageDialog(null, "See you next time!");
        }
        

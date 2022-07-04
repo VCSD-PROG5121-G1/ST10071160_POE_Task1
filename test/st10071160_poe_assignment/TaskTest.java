@@ -14,6 +14,7 @@ import static org.junit.Assert.*;
  */
 public class TaskTest
 {
+    Task tk = new Task();
     
     public TaskTest()
     {
@@ -97,6 +98,11 @@ public class TaskTest
     @Test
     public void testCheckTDesc()
     {
+        String description = "Create Login to authenticate users";
+        
+        boolean bDesc = tk.checkTDesc(description);
+        
+        assertEquals(true, bDesc);
     }
 
     /**
@@ -105,6 +111,13 @@ public class TaskTest
     @Test
     public void testReturnTID()
     {
+        String details = "Robyn Harrison ";
+        String taskName = "Login Feature";
+        
+        String id = tk.returnTID();
+        
+        assertEquals("", id);
+        
     }
 
     /**
@@ -113,6 +126,12 @@ public class TaskTest
     @Test
     public void testTotalHours()
     {
+        int tHours = 8;
+        
+        int ttHours = tk.totalHours(tHours);
+        
+        assertEquals(8, ttHours);
+        
     }
 
     /**

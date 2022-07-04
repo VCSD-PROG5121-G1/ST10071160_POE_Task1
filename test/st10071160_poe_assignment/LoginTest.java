@@ -74,11 +74,14 @@ public class LoginTest
     @Test
     public void testCheckUserName()
     {
-        String username = "Aida_";
+        String username = "kyl_1";
+        String username2 = "kyle!!!!!!!";
         
         boolean tname = lg.checkUserName(username);
+        boolean tname2 = lg.checkUserName(username2);
         
         assertEquals(true, tname);
+        assertEquals(false, tname2);
     }
 
     /**
@@ -87,11 +90,14 @@ public class LoginTest
     @Test
     public void testCheckPasswordComplexity()
     {
-        String password = "Bradley_999";
+        String password = "Ch&&sec@ke99!";
+        String password2 = "password";
         
         boolean tpass = lg.checkPasswordComplexity(password);
+        boolean tpass2 = lg.checkPasswordComplexity(password2);
         
         assertEquals(true, tpass);
+        assertEquals(false, tpass2);
     }
 
     /**
@@ -102,11 +108,16 @@ public class LoginTest
     {
         boolean user = true;
         boolean pass = true;
+        boolean user2 = false;
+        boolean pass2 = false;
         
         String rUser = lg.registerUser(user, pass);
+        String rUser2 = lg.registerUser(user2, pass2);
         
         assertEquals("Username and password successfully captured", user);
         assertEquals("Username and password successfully captured", pass);
+        assertEquals("Username not formatted correctly, please enter a username that includes an underscore (_) and is less than 5 characters long", user2);
+        assertEquals("Password is not formatted correctly, please enter a password that is more than 8 characters long, and includes a capital letter, a number, and a special character", pass2);
     }
 
     /**
@@ -115,8 +126,8 @@ public class LoginTest
     @Test
     public void testLoginUser()
     {
-        String lUser = "Aida_";
-        String lPass = "Bradley_999";
+        String lUser = "kyl_1";
+        String lPass = "Ch&&sec@ke99!";
         boolean tlUser = lg.loginUser(lUser);
         boolean tlPass = lg.loginUser(lPass);
         
@@ -131,8 +142,8 @@ public class LoginTest
     public void testReturnLoginStatus()
     {
         boolean logUser = true;
-        String name = "";
-        String surname = "";
+        String name = "Kyle";
+        String surname = "Kyle";
         
         String strUser = lg.returnLoginStatus();
         
